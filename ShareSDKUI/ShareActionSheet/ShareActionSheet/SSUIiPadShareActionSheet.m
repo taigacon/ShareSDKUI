@@ -55,7 +55,6 @@ extern const CGFloat SSUIPageViewH;
                 //根据行数调整高度
                 _popover.popoverContentSize = CGSizeMake(SSUIPageViewW, 80*(_row + 1));
             }
-        
             _popover.delegate = self;
         }
     }

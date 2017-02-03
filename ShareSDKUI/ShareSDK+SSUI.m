@@ -13,6 +13,7 @@
 #import "SSUIShareActionSheetStyle.h"
 #import "SSUIEditorViewStyle.h"
 #import "SSUIEditorViewStyle_Private.h"
+#import "SSUIBundleHelper.h"
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 #import <ShareSDKConfigFile/ShareSDK+XML.h>
 #import <ShareSDK/ShareSDK+Base.h>
@@ -85,7 +86,7 @@ extern const NSInteger SSDKErrorCodePlatformNotFound;
     {
         NSError *error = [NSError errorWithDomain:SSDKErrorDomain
                                              code:SSDKErrorCodePlatformNotFound
-                                         userInfo:@{@"error description ":NSLocalizedStringWithDefaultValue(@"NoValidPlatform", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"NoValidPlatform", nil)}];
+                                         userInfo:@{@"error description ":NSLocalizedStringWithDefaultValue(@"NoValidPlatform", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"NoValidPlatform", nil)}];
         shareStateChangedHandler (SSDKResponseStateFail, SSDKPlatformTypeUnknown, nil, nil, error, YES);
     }
     

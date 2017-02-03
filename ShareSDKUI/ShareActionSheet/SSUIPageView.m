@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIPageControl *pageCtr;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) SSUIPlatformsView *platformView;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end
 
@@ -37,18 +38,22 @@
         _totalColums = columnCount;
         _topIntervalH = 35.0;
         _pageControlH = 35.0;
-
-        if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
-        {
-            _topIntervalH = 0.0;
-            _platformItemW = itemH;
-        }
         
         self.backgroundColor = [UIColor whiteColor];
         
         if ([SSUIShareActionSheetStyle sharedInstance].actionSheetColor)
         {
             self.backgroundColor = [SSUIShareActionSheetStyle sharedInstance].actionSheetColor;
+        }
+        
+        if([SSUIShareActionSheetStyle sharedInstance].actionSheetImage)
+        {
+            UIImageView *view = [[UIImageView alloc]initWithImage:[SSUIShareActionSheetStyle sharedInstance].actionSheetImage];
+            _imageView = view;
+            CGFloat platformViewW = SSUI_WIDTH(self);
+            CGFloat platformViewH = SSUI_HEIGHT(self);
+            view.frame = CGRectMake(0, 0, platformViewW, platformViewH);
+            [self addSubview:view];
         }
         
         //计算出每页有多少个item和共有多少页
@@ -173,6 +178,11 @@
     _scrollView.contentSize = CGSizeMake(SSUI_WIDTH(self) * self.pageNum, 0);
     _scrollView.frame = CGRectMake(0, 0, SSUI_WIDTH(self), SSUI_HEIGHT(self));
     
+    if(_imageView)
+    {
+        _imageView.frame = CGRectMake(0, 0, SSUI_WIDTH(self), SSUI_HEIGHT(self));
+    }
+    
     NSInteger loc = 0;
     
     for (int index = 0; index < self.pageNum; index++)
@@ -197,11 +207,6 @@
         _platformView.totalColums = self.totalColums;
         _platformView.platformItemW = self.platformItemW;
         _platformView.items = arr;
-        
-        if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
-        {
-            platformViewH = _platformItemW * _platformView.totalRow;
-        }
         
         _platformView.frame = CGRectMake(index * platformViewW, _topIntervalH, platformViewW, platformViewH);
         
@@ -265,11 +270,6 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
-    
-    if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
-    {
-        [self needRedrawRect:rect];
-    }
 }
 
 @end

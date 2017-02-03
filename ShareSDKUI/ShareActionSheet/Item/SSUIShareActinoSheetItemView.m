@@ -56,20 +56,12 @@ static const CGFloat iconPercentage = 0.35;
             name.font = [SSUIShareActionSheetStyle sharedInstance].itemNameFont;
         }
         
-        if ([SSUIShareActionSheetStyle sharedInstance].actionSheetColor)
-        {
-            self.backgroundColor = [SSUIShareActionSheetStyle sharedInstance].actionSheetColor;
-        }
+        self.backgroundColor = [UIColor clearColor];
         
         [self addSubview:name];
         self.nameLabel = name;
 
         UIImageView *icon = [[UIImageView alloc] init];
-        
-        if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
-        {
-            _itemW = itemWidth;
-        }
 
         [self addTarget:self action:@selector(itemClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:icon];
@@ -100,12 +92,6 @@ static const CGFloat iconPercentage = 0.35;
     self.platformIcon.frame = CGRectMake(0, 0, _itemW, iconH);
     CGFloat nameY = CGRectGetMaxY(self.platformIcon.frame);
     self.nameLabel.frame = CGRectMake(0, nameY, _itemW, nameH);
-    
-    if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
-    {
-        self.platformIcon.frame = CGRectMake((_itemW - _itemW * iconPercentage)/2 , _itemW*0.15, _itemW * iconPercentage, _itemW *iconPercentage);
-        self.nameLabel.frame = CGRectMake(1, _itemW - nameH - _itemW*0.15 , _itemW -2, nameH);
-    }
 }
 
 @end

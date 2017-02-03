@@ -9,8 +9,7 @@
 #import "SSUIShareActionSheetPlatformItem.h"
 #import <MOBFoundation/MOBFImage.h>
 #import "SSUIShareActionSheetStyle_Private.h"
-
-static NSBundle *uiBundle = nil;
+#import "SSUIBundleHelper.h"
 
 @interface SSUIShareActionSheetPlatformItem ()
 
@@ -24,24 +23,23 @@ static NSBundle *uiBundle = nil;
     {
         _platformType = platformType;
         
-        if (!uiBundle)
-        {
-            NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"ShareSDKUI"
-                                                                   ofType:@"bundle"];
-            uiBundle = [NSBundle bundleWithPath:bundlePath];
-        }
+        _icon = [SSUIShareActionSheetPlatformItem itemIconForPlatformType:platformType];
         
-        _icon = [MOBFImage imageName:[NSString stringWithFormat:@"Icon/sns_icon_%zi.png",_platformType] bundle:uiBundle];
-        
-        if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple)
-        {
-            _icon = [MOBFImage imageName:[NSString stringWithFormat:@"Icon_simple/sns_icon_%zi.png",_platformType] bundle:uiBundle];
-        }
-        
-        NSString *temName = [NSString stringWithFormat:@"ShareType_%zi",_platformType];
-        _label = NSLocalizedStringWithDefaultValue(temName, @"ShareSDKUI_Localizable", uiBundle, temName, nil);
+        _label = [SSUIBundleHelper labelWithPlatformType:platformType];
     }
     return self;
+}
+
++ (UIImage *)itemIconForPlatformType:(SSDKPlatformType)platformType
+{
+    NSDictionary *itemIcons = [SSUIShareActionSheetStyle sharedInstance].itemIcons;
+    UIImage *image = [itemIcons objectForKey:@(platformType)];
+    if(image)
+    {
+        return image;
+    }
+    
+    return [SSUIBundleHelper itemIconWithPlatformType:platformType];
 }
 
 - (NSString *)label

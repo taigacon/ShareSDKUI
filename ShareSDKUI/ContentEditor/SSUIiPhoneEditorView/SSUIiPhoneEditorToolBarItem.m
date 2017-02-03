@@ -12,6 +12,7 @@
 #import <MOBFoundation/MOBFImage.h>
 #import "SSUITypeDef.h"
 #import "SSUIShareActionSheetStyle_Private.h"
+#import "SSUIBundleHelper.h"
 
 #define ICON_WIDTH 21
 #define ICON_HEIGHT 21
@@ -62,19 +63,7 @@
     {
         _needLayout = NO;
         
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"ShareSDKUI"
-                                                               ofType:@"bundle"];
-        NSBundle *uiBundle = [NSBundle bundleWithPath:bundlePath];
-        UIImage *iconImage = [MOBFImage imageName:[NSString stringWithFormat:@"Icon/sns_icon_%ld.png",
-                                                   (long)[[_data objectForKey:KEY_TYPE] integerValue]]
-                                           bundle:uiBundle];
-        
-        if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple)
-        {
-            iconImage = [MOBFImage imageName:[NSString stringWithFormat:@"Icon_simple/sns_icon_%ld.png",
-                                  (long)[[_data objectForKey:KEY_TYPE] integerValue]]
-                          bundle:uiBundle];
-        }
+        UIImage *iconImage = [SSUIBundleHelper itemIconWithPlatformType:(long)[[_data objectForKey:KEY_TYPE] integerValue]];
         
         BOOL selected = [[_data objectForKey:KEY_SELECTED] boolValue];
         
@@ -97,26 +86,13 @@
     
     CGContextRef context = NULL;
     
-    if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple)
-    {
-        context = CGBitmapContextCreate (nil,
-                                         width,
-                                         height,
-                                         8,
-                                         0,
-                                         colorSpace,
-                                         kCGImageAlphaOnly);
-    }
-    else
-    {
-        context = CGBitmapContextCreate (nil,
-                                         width,
-                                         height,
-                                         8,
-                                         0,
-                                         colorSpace,
-                                         kCGBitmapByteOrderDefault);
-    }
+    context = CGBitmapContextCreate (nil,
+                                     width,
+                                     height,
+                                     8,
+                                     0,
+                                     colorSpace,
+                                     kCGBitmapByteOrderDefault);
 
     
     CGColorSpaceRelease(colorSpace);

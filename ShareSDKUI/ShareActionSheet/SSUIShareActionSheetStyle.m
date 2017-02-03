@@ -11,6 +11,13 @@
 
 @implementation SSUIShareActionSheetStyle
 
+- (instancetype)init
+{
+    self = [super init];
+    self.itemIcons = [[NSMutableDictionary alloc] init];
+    return self;
+}
+
 + (instancetype)sharedInstance
 {
     static SSUIShareActionSheetStyle *style = nil;
@@ -24,24 +31,14 @@
     return style;
 }
 
-+ (void)setShareActionSheetStyle:(ShareActionSheetStyle)style
-{
-    [SSUIShareActionSheetStyle sharedInstance].style = style;
-    
-    //默认隐藏取消按钮
-    if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple)
-    {
-        [self isCancelButtomHidden:YES];
-    }
-    else
-    {
-        [self isCancelButtomHidden:NO];
-    }
-}
-
 + (void)setActionSheetColor:(UIColor *)color
 {
     [SSUIShareActionSheetStyle sharedInstance].actionSheetColor = color;
+}
+
++ (void)setActionSheetImage:(UIImage *)image
+{
+    [SSUIShareActionSheetStyle sharedInstance].actionSheetImage = image;
 }
 
 + (void)setActionSheetBackgroundColor:(UIColor *)color
@@ -52,6 +49,12 @@
 + (void)setItemNameColor:(UIColor *)color
 {
     [SSUIShareActionSheetStyle sharedInstance].itemNameColor = color;
+}
+
++ (void)setItemIcon:(UIImage *)image forPlatformType:(SSDKPlatformType)type
+{
+    NSMutableDictionary *itemIcons = (NSMutableDictionary *)[SSUIShareActionSheetStyle sharedInstance].itemIcons;
+    [itemIcons setObject:image forKey:@(type)];
 }
 
 + (void)setItemNameFont:(UIFont *)font

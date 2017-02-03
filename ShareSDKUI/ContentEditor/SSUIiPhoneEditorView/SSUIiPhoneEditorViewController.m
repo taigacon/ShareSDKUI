@@ -9,6 +9,7 @@
 #import "SSUIiPhoneEditorViewController.h"
 #import "SSUIShareContentEditorDef.h"
 #import "SSUIEditorViewStyle_Private.h"
+#import "SSUIBundleHelper.h"
 
 #define SPACING 5.0
 #define VIEW_HEIGHT_3_5 190.0
@@ -48,7 +49,7 @@
         self.title = NSLocalizedStringWithDefaultValue(@"ShareContent", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"ShareContent", nil);//导航栏的title
 
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:
-                                                 NSLocalizedStringWithDefaultValue(@"Cancel", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"Cancel", nil)
+                                                 NSLocalizedStringWithDefaultValue(@"Cancel", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"Cancel", nil)
                                                                                  style:UIBarButtonItemStyleBordered
                                                                                 target:self
                                                                                 action:@selector(cancelButtonClickHandler:)];
@@ -59,7 +60,7 @@
         
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:
-                                                  NSLocalizedStringWithDefaultValue(@"Share", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"Share", nil)
+                                                  NSLocalizedStringWithDefaultValue(@"Share", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"Share", nil)
                                                                                   style:UIBarButtonItemStyleBordered
                                                                                  target:self
                                                                                  action:@selector(sendButtonClickHandler:)];
@@ -283,10 +284,10 @@
                      if (state == SSDKResponseStateFail)
                      {
                          
-                         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: NSLocalizedStringWithDefaultValue(@"Alert", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"Alert", nil)
-                                                                        message:[NSString stringWithFormat:@"%@, error message:%@",NSLocalizedStringWithDefaultValue(@"AuthorizeFailed", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"AuthorizeFailed", nil), [error userInfo]]
+                         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: NSLocalizedStringWithDefaultValue(@"Alert", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"Alert", nil)
+                                                                        message:[NSString stringWithFormat:@"%@, error message:%@",NSLocalizedStringWithDefaultValue(@"AuthorizeFailed", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"AuthorizeFailed", nil), [error userInfo]]
                                                                        delegate:self
-                                                              cancelButtonTitle:NSLocalizedStringWithDefaultValue(@"OK", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"OK", nil)
+                                                              cancelButtonTitle:NSLocalizedStringWithDefaultValue(@"OK", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"OK", nil)
                                                               otherButtonTitles:nil];
                          [alert show];
                      }
@@ -297,10 +298,10 @@
         else
         {
             UIAlertView *alert =[[UIAlertView alloc]initWithTitle:
-                                 NSLocalizedStringWithDefaultValue(@"Alert", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"Alert", nil)
-                                                          message:NSLocalizedStringWithDefaultValue(@"InputTheShareContent", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"InputTheShareContent", nil)
+                                 NSLocalizedStringWithDefaultValue(@"Alert", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"Alert", nil)
+                                                          message:NSLocalizedStringWithDefaultValue(@"InputTheShareContent", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"InputTheShareContent", nil)
                                                          delegate:self
-                                                cancelButtonTitle:NSLocalizedStringWithDefaultValue(@"OK", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"OK", nil)
+                                                cancelButtonTitle:NSLocalizedStringWithDefaultValue(@"OK", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"OK", nil)
                                                 otherButtonTitles:nil];
             [alert show];
         }

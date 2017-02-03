@@ -137,6 +137,8 @@
 		DEA563821BE76048002E9552 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = DEA563801BE76048002E9552 /* README.md */; };
 		DEA563851BE7604F002E9552 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA563841BE7604F002E9552 /* KakaoOpenSDK.framework */; };
 		DECF63AC1B54B53100B6197E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECF63AB1B54B53100B6197E /* LaunchScreen.xib */; };
+		DFF513DD1E44757C007D1B9B /* SSUIBundleHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = DFF513DB1E44757C007D1B9B /* SSUIBundleHelper.h */; };
+		DFF513DE1E44757C007D1B9B /* SSUIBundleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF513DC1E44757C007D1B9B /* SSUIBundleHelper.m */; };
 		E2C646041DAB42D4003FEA12 /* ShareSDKConfigFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C646021DAB42D4003FEA12 /* ShareSDKConfigFile.framework */; };
 		E2FF0FF01B56922F008EA663 /* SSUIEditorViewStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = E2FF0FEE1B56922F008EA663 /* SSUIEditorViewStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2FF0FF11B56922F008EA663 /* SSUIEditorViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FF0FEF1B56922F008EA663 /* SSUIEditorViewStyle.m */; };
@@ -162,7 +164,7 @@
 
 /* Begin PBXFileReference section */
 		D056D8C51B32CD74000C7178 /* SSUITypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSUITypeDef.h; sourceTree = "<group>"; };
-		D0DD5A701B329802001D6161 /* ShareSDKUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareSDKUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0DD5A701B329802001D6161 /* ShareSDKUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ShareSDKUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DD5A741B329802001D6161 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0DD5A7A1B329AA7001D6161 /* ShareSDKUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSDKUI.h; sourceTree = "<group>"; };
 		D0DD5A7B1B329AA7001D6161 /* ShareSDKUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSDKUI.m; sourceTree = "<group>"; };
@@ -303,6 +305,8 @@
 		DEA563801BE76048002E9552 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DEA563841BE7604F002E9552 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		DECF63AB1B54B53100B6197E /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		DFF513DB1E44757C007D1B9B /* SSUIBundleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSUIBundleHelper.h; sourceTree = "<group>"; };
+		DFF513DC1E44757C007D1B9B /* SSUIBundleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSUIBundleHelper.m; sourceTree = "<group>"; };
 		E2C646021DAB42D4003FEA12 /* ShareSDKConfigFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConfigFile.framework; sourceTree = "<group>"; };
 		E2FF0FEE1B56922F008EA663 /* SSUIEditorViewStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSUIEditorViewStyle.h; path = SSUIiPhoneEditorView/SSUIEditorViewStyle.h; sourceTree = "<group>"; };
 		E2FF0FEF1B56922F008EA663 /* SSUIEditorViewStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSUIEditorViewStyle.m; path = SSUIiPhoneEditorView/SSUIEditorViewStyle.m; sourceTree = "<group>"; };
@@ -638,6 +642,8 @@
 				DE93B11D1B4F6C4300459A2A /* ShareActionSheet */,
 				DE93B1291B4F6C4300459A2A /* SSUIShareActionSheetController.h */,
 				DE93B12A1B4F6C4300459A2A /* SSUIShareActionSheetController.m */,
+				DFF513DB1E44757C007D1B9B /* SSUIBundleHelper.h */,
+				DFF513DC1E44757C007D1B9B /* SSUIBundleHelper.m */,
 			);
 			path = ShareActionSheet;
 			sourceTree = "<group>";
@@ -701,6 +707,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFF513DD1E44757C007D1B9B /* SSUIBundleHelper.h in Headers */,
 				DE1EA3511B4F62DE00DE95E2 /* SSUIHorizontalTableView.h in Headers */,
 				DE1EA3471B4F62DE00DE95E2 /* SSUIBaseShareContentEditor_Private.h in Headers */,
 				DE97DF3D1B568D7000D21F5D /* SSUIShareActionSheetStyle.h in Headers */,
@@ -791,9 +798,11 @@
 				TargetAttributes = {
 					D0DD5A6F1B329802001D6161 = {
 						CreatedOnToolsVersion = 6.3.1;
+						ProvisioningStyle = Automatic;
 					};
 					DE93B04B1B4E49FE00459A2A = {
-						DevelopmentTeam = Q87QUX3533;
+						DevelopmentTeam = G83F239YD3;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -884,6 +893,7 @@
 				DE93B1391B4F6C4300459A2A /* SSUIPageView.m in Sources */,
 				DE1EA3461B4F62DE00DE95E2 /* SSUIBaseShareContentEditor.m in Sources */,
 				D0DD5A7F1B329AE5001D6161 /* ShareSDK+SSUI.m in Sources */,
+				DFF513DE1E44757C007D1B9B /* SSUIBundleHelper.m in Sources */,
 				DE93B1321B4F6C4300459A2A /* SSUIBaseShareActionSheet.m in Sources */,
 				DE93B13D1B4F6C4300459A2A /* SSUIShareActionSheetController.m in Sources */,
 				DE93B1301B4F6C4300459A2A /* SSUIShareActionSheetPlatformItem.m in Sources */,
@@ -1050,6 +1060,7 @@
 		D0DD5A781B329802001D6161 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1080,6 +1091,7 @@
 		D0DD5A791B329802001D6161 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1111,7 +1123,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = G83F239YD3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1144,8 +1157,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mob.demoShareSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4f1240ae-90c9-4f0e-8dfa-cea4de3df319";
-				PROVISIONING_PROFILE_SPECIFIER = Q87QUX3533/MobProvisioningProfiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1159,8 +1172,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen GangQiang (785VZN2ZN7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = G83F239YD3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1189,8 +1203,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mob.demoShareSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4f1240ae-90c9-4f0e-8dfa-cea4de3df319";
-				PROVISIONING_PROFILE_SPECIFIER = Q87QUX3533/MobProvisioningProfiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

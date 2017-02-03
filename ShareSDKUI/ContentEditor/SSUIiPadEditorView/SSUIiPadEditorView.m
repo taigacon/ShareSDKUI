@@ -9,6 +9,7 @@
 #import "SSUIiPadEditorView.h"
 #import "SSUIShareContentEditorDef.h"
 #import "SSUIEditorViewStyle_Private.h"
+#import "SSUIBundleHelper.h"
 #define NAV_BAR_HEIGHT 44.0
 
 #define NAV_BAR_PADDING_LEFT 10.0
@@ -51,7 +52,7 @@
         }
         else
         {
-            [_cancelButton setTitle:NSLocalizedStringWithDefaultValue(@"Cancel", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"Cancel", nil) forState:UIControlStateNormal];
+            [_cancelButton setTitle:NSLocalizedStringWithDefaultValue(@"Cancel", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"Cancel", nil) forState:UIControlStateNormal];
         }
         
         [_cancelButton setTitleColor:[MOBFColor colorWithRGB:0x007aff] forState:UIControlStateNormal];
@@ -75,7 +76,7 @@
             
             [_sendButton setTitle:NSLocalizedStringWithDefaultValue(@"Share",
                                                                     @"ShareSDKUI_Localizable",
-                                                                    [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]],
+                                                                    [SSUIBundleHelper uiBundle],
                                                                     @"Share", nil)
                          forState:UIControlStateNormal];
         }
@@ -99,7 +100,7 @@
         _titleView.textColor = [UIColor blackColor];
         _titleView.text = NSLocalizedStringWithDefaultValue(@"ShareContent",
                                                             @"ShareSDKUI_Localizable",
-                                                            [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]],
+                                                            [SSUIBundleHelper uiBundle],
                                                             @"ShareContent",
                                                             nil);
         
@@ -118,8 +119,7 @@
         [self addSubview:_sendButton];
         [self addSubview:_titleView];
 
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"];
-        UIImageView *lineView = [[UIImageView alloc] initWithImage:[MOBFImage imageName:@"ContentEditorImg/line@2x.gif" bundle:[NSBundle bundleWithPath:bundlePath]]];
+        UIImageView *lineView = [[UIImageView alloc] initWithImage:[MOBFImage imageName:@"ContentEditorImg/line@2x.gif" bundle:[SSUIBundleHelper uiBundle]]];
         lineView.backgroundColor =  [UIColor greenColor];
         lineView.frame = CGRectMake(0.0,
                                     NAV_BAR_HEIGHT - 1,
@@ -319,10 +319,10 @@
                      if (state ==  SSDKResponseStateFail)
                      {
                          
-                         UIAlertView* alert = [[UIAlertView alloc]initWithTitle: NSLocalizedStringWithDefaultValue(@"Alert", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"Alert", nil)
-                                                                        message:[NSString stringWithFormat:@"%@, error message:%@",NSLocalizedStringWithDefaultValue(@"AuthorizeFailed", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"AuthorizeFailed", nil), [error userInfo]]
+                         UIAlertView* alert = [[UIAlertView alloc]initWithTitle: NSLocalizedStringWithDefaultValue(@"Alert", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"Alert", nil)
+                                                                        message:[NSString stringWithFormat:@"%@, error message:%@",NSLocalizedStringWithDefaultValue(@"AuthorizeFailed", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"AuthorizeFailed", nil), [error userInfo]]
                                                                        delegate:self
-                                                              cancelButtonTitle:NSLocalizedStringWithDefaultValue(@"OK", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"OK", nil)
+                                                              cancelButtonTitle:NSLocalizedStringWithDefaultValue(@"OK", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"OK", nil)
                                                               otherButtonTitles:nil];
                          [alert show];
                      }
@@ -332,10 +332,10 @@
         else
         {
             UIAlertView *alert =[[UIAlertView alloc]initWithTitle:
-                                 NSLocalizedStringWithDefaultValue(@"Alert", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"Alert", nil)
-                                                          message:NSLocalizedStringWithDefaultValue(@"InputTheShareContent", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"InputTheShareContent", nil)
+                                 NSLocalizedStringWithDefaultValue(@"Alert", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"Alert", nil)
+                                                          message:NSLocalizedStringWithDefaultValue(@"InputTheShareContent", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"InputTheShareContent", nil)
                                                          delegate:self
-                                                cancelButtonTitle:NSLocalizedStringWithDefaultValue(@"OK", @"ShareSDKUI_Localizable", [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]], @"OK", nil)
+                                                cancelButtonTitle:NSLocalizedStringWithDefaultValue(@"OK", @"ShareSDKUI_Localizable", [SSUIBundleHelper uiBundle], @"OK", nil)
                                                 otherButtonTitles:nil];
             [alert show];
         }

@@ -11,9 +11,9 @@
 @interface SSUIShareActionSheetStyle ()
 
 /**
- *  ShareSDK UI风格
+ *  分享菜单栏颜色
  */
-@property (nonatomic, assign) ShareActionSheetStyle style;
+@property (nonatomic, strong) UIImage *actionSheetImage;
 
 /**
  *  分享菜单栏颜色
@@ -24,6 +24,11 @@
  *  分享菜单栏背景颜色
  */
 @property (nonatomic, strong) UIColor *actionSheetBackgroundColor;
+
+/**
+ *  item的图标
+ */
+@property (nonatomic, strong) NSDictionary *itemIcons;
 
 /**
  *  标题文本颜色

@@ -12,6 +12,7 @@
 #import "SSUIShareContentEditorDef.h"
 #import <ShareSDK/ShareSDK.h>
 #import "SSUITypeDef.h"
+#import "SSUIBundleHelper.h"
 
 #define KEY_TYPE @"type"
 #define KEY_TITLE @"title"
@@ -53,7 +54,7 @@
         _textLabel.font = [UIFont systemFontOfSize:12];
         _textLabel.text = NSLocalizedStringWithDefaultValue(@"ShareTo",
                                                             @"ShareSDKUI_Localizable",
-                                                            [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"ShareSDKUI" ofType:@"bundle"]],
+                                                            [SSUIBundleHelper uiBundle],
                                                             @"ShareTo",
                                                             nil);
         _textLabel.textAlignment = NSTextAlignmentCenter;

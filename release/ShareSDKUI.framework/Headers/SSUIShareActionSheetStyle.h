@@ -8,21 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <ShareSDK/SSDKTypeDefine.h>
 
 @interface SSUIShareActionSheetStyle : NSObject
 
 /**
- *  ShareSDK UI风格
+ *  设置分享菜单栏颜色
+ *
+ *  @param color 背景颜色
  */
-typedef NS_ENUM(NSInteger, ShareActionSheetStyle)  {
-    ShareActionSheetStyleSystem     = 0,    // 系统类型，默认
-    ShareActionSheetStyleSimple     = 1,    // 简洁类型
-};
-
-/**
- *  设置ShareSDK UI风格
- */
-+ (void)setShareActionSheetStyle:(ShareActionSheetStyle)style;
++ (void)setActionSheetImage:(UIImage *)image;
 
 /**
  *  设置分享菜单栏颜色
@@ -37,6 +32,14 @@ typedef NS_ENUM(NSInteger, ShareActionSheetStyle)  {
  *  @param color 背景颜色
  */
 + (void)setActionSheetBackgroundColor:(UIColor *)color;
+
+/**
+ *  设置分享图标
+ *
+ *  @param color 背景颜色
+ */
+
++ (void)setItemIcon:(UIImage *)image forPlatformType:(SSDKPlatformType)type;
 
 /**
  *  设置标题文本颜色

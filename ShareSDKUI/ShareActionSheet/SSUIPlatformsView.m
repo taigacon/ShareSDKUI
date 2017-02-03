@@ -46,25 +46,7 @@
         
         _screenH = [UIScreen mainScreen].bounds.size.width > [UIScreen mainScreen].bounds.size.height ? [UIScreen mainScreen].bounds.size.width : [UIScreen mainScreen].bounds.size.height;
         
-        
-        if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
-        {
-            if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
-            {
-                _itemW = _screenH/_totalColums;
-            }
-            else
-            {
-                _itemW = _screenW/_totalColums;
-            }
-
-            _itemH = _itemW;
-        }
-    
-        if ([SSUIShareActionSheetStyle sharedInstance].actionSheetColor)
-        {
-            self.backgroundColor = [SSUIShareActionSheetStyle sharedInstance].actionSheetColor;
-        }
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -94,18 +76,17 @@
     CGFloat viewW = SSUI_WIDTH(self);
     CGFloat viewH = SSUI_HEIGHT(self);
     
-    CGFloat marginX = (viewW - self.totalColums * _itemW) / (self.totalColums + 1);
+    CGFloat marginX = 0;
     CGFloat marginY = 0;
     
     if (self.totalRow > 1)
     {
         marginY = (viewH - self.totalRow *_itemH)/ (self.totalRow - 1);
+        marginX = (viewW - self.totalColums * _itemW) / (self.totalColums + 1);
     }
-    
-    if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
+    else
     {
-        marginX = 0;
-        marginY = 0;
+        marginX = (viewW - [self.items count] * _itemW) / ([self.items count] + 1);
     }
 
     for (int index = 0; index < [self.items count]; index++)
@@ -113,53 +94,12 @@
         if (self.itemArr.count > index)
         {
             _itemView = self.itemArr[index];
-            
-            if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
-            {
-                CGFloat temWidth;
-                //如果是横屏
-                if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
-                {
-                    temWidth = _screenH;
-                }
-                else
-                {
-                    temWidth = _screenW;
-                }
-                
-                _platformItemW = temWidth/_totalColums;
-                
-                _itemView.itemW = _platformItemW;
-                _itemW = _platformItemW;
-            }
         }
         else
         {
-            if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
-            {
-                CGFloat temWidth;
-                //如果是横屏
-                if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
-                {
-                    temWidth = _screenH;
-                }
-                else
-                {
-                    temWidth = _screenW;
-                }
-                
-                _platformItemW = temWidth/_totalColums;
-                
-                _itemView = [[SSUIShareActinoSheetItemView alloc] initWithIndex:(index + self.platformIndex *self.totalRow*self.totalColums)
-                                                                          itemW:_platformItemW
-                                                                          itemH:_platformItemW];
-            }
-            else
-            {
-                _itemView = [[SSUIShareActinoSheetItemView alloc] initWithIndex:(index + self.platformIndex *self.totalRow*self.totalColums)
-                                                                          itemW:_itemW
-                                                                          itemH:_itemW];
-            }
+            _itemView = [[SSUIShareActinoSheetItemView alloc] initWithIndex:(index + self.platformIndex *self.totalRow*self.totalColums)
+                                                                      itemW:_itemW
+                                                                      itemH:_itemW];
             
             [self.itemArr addObject:_itemView];
         }
@@ -175,13 +115,6 @@
         CGFloat itemX = marginX + col * (_itemW + marginX);
         CGFloat itemY = row * (_itemH + marginY);
         _itemView.frame = CGRectMake(itemX, itemY, _itemW, _itemH);
-        
-        if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
-        {
-            //留一个像素画线
-            itemY = row * (_itemW + marginY);
-            _itemView.frame = CGRectMake(itemX+1, itemY+1, _itemW-2, _itemW-2);
-        }
         
         [self addSubview:_itemView];
     }
@@ -233,11 +166,6 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
-    
-    if ([SSUIShareActionSheetStyle sharedInstance].style == ShareActionSheetStyleSimple && ![MOBFDevice isPad])
-    {
-        [self needRedrawRect:rect];
-    }
 }
 
 @end
